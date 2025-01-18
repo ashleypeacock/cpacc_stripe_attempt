@@ -1,0 +1,33 @@
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Enable HTTPS strict transport security
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    # Prevent clickjacking
+    X-Frame-Options = "DENY"
+    # Enable XSS protection
+    X-XSS-Protection = "1; mode=block"
+    # Prevent MIME type sniffing
+    X-Content-Type-Options = "nosniff"
+    # Referrer policy
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    # Permissions policy
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=(), midi=(), sync-xhr=(), magnetometer=(), gyroscope=(), accelerometer=(), ambient-light-sensor=(), autoplay=(), encrypted-media=(), fullscreen=(self), picture-in-picture=(self)"
+    # Content Security Policy
+    Content-Security-Policy = '''
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.googletagmanager.com https://*.google-analytics.com;
+      style-src 'self' 'unsafe-inline';
+      img-src 'self' data: https://*.buymeacoffee.com https://*.supabase.co;
+      connect-src 'self' https://*.supabase.co https://*.googletagmanager.com https://*.google-analytics.com https://region1.google-analytics.com https://api.web3forms.com;
+      font-src 'self';
+      manifest-src 'self';
+      media-src 'none';
+      object-src 'none';
+      frame-src 'none';
+      worker-src 'self';
+      form-action 'self';
+      frame-ancestors 'none';
+      base-uri 'self';
+      upgrade-insecure-requests;
+    '''

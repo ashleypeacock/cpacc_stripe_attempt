@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cpacc-quiz.stackblitz.io/sitemap.xml
